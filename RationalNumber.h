@@ -11,6 +11,7 @@ public:
 	int getNumerator();
 	std::string toString();
 	RationalNumber add(const RationalNumber&);
+	RationalNumber subtract(const RationalNumber&);
 
 private:
 	int numerator;

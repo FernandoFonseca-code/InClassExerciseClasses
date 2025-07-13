@@ -65,3 +65,12 @@ RationalNumber RationalNumber::add(const RationalNumber& other)
 	int d = denominator * other.denominator;
 	return RationalNumber(n, d);
 }
+
+RationalNumber RationalNumber::subtract(const RationalNumber& other)
+{
+	//int n = numerator * other.denominator - other.numerator * denominator;
+	//int d = denominator * other.denominator;
+	//return RationalNumber(n, d);
+
+	return add(RationalNumber(-other.numerator, other.denominator));
+}
