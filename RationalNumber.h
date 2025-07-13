@@ -10,9 +10,12 @@ public:
 	int getDenominator();
 	int getNumerator();
 	std::string toString();
+	RationalNumber add(const RationalNumber&);
 
 private:
 	int numerator;
 	int denominator;
+	void simplify();
+	int gcd(int, int);
 };
 #endif

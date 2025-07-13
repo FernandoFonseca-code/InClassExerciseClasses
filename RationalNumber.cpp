@@ -11,6 +11,30 @@ RationalNumber::RationalNumber(int numerator, int denominator)
 {
 	this->numerator = numerator;
 	this->denominator = denominator;
+	simplify();
+}
+void RationalNumber::simplify()
+{
+	int div = gcd(abs(numerator), abs(denominator));
+	numerator /= div;
+	denominator /= div;
+	if (denominator < 0) {
+		denominator *= -1;
+		numerator *= -1;
+	}
+}
+
+int RationalNumber::gcd(int a, int b)
+{
+
+	int res = a < b ? a : b;
+
+	while (res > 1) {
+		if (a % res == 0 && b % res == 0) {
+			return res;
+		}
+		res--;
+	}
 }
 
 int RationalNumber::getDenominator()
@@ -25,5 +49,19 @@ int RationalNumber::getNumerator()
 
 std::string RationalNumber::toString()
 {
-	return std::to_string(numerator) + "/" + std::to_string(denominator);
+	if (denominator == 1) {
+		return std::to_string(numerator);
+	}
+	else
+	{
+		return std::to_string(numerator) + "/" + std::to_string(denominator);
+	}
+	
+}
+
+RationalNumber RationalNumber::add(const RationalNumber& other)
+{
+	int n = numerator * other.denominator + other.numerator * denominator;
+	int d = denominator * other.denominator;
+	return RationalNumber(n, d);
 }
